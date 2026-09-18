@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-paper-line;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+  }
+
+  /* Visible keyboard focus everywhere, styled to match the ledger rather
+     than the browser default blue ring. */
+  :focus-visible {
+    outline: 2px solid #c98a2b;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* A single hand-stamped underline used only for the brand mark —
+     the one place the design spends its "boldness". */
+  .stamp-underline {
+    position: relative;
+  }
+  .stamp-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.15em;
+    height: 0.09em;
+    background: currentColor;
+    opacity: 0.35;
+    transform: rotate(-0.6deg);
+  }
+}
