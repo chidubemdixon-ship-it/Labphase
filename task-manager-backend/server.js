@@ -32,6 +32,21 @@ const configuredOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
 
 const isLocalhostOrigin = (origin) => /^https?:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin);
 
+// Vercel gives every branch, PR, and commit its own preview URL in addition
+// to the stable production one (e.g. task-manager-frontend-git-main-xxx,
+// task-manager-frontend-<hash>-xxx). Rather than whitelist each one by
+// hand, allow any *.vercel.app subdomain that starts with the same project
+// name as the configured CLIENT_URL, so preview deploys aren't blocked.
+const vercelProjectPattern = (() => {
+  try {
+    const host = new URL(configuredOrigins[0]).hostname;
+    const projectName = host.split('.vercel.app')[0].split('-').slice(0, 3).join('-');
+    return new RegExp(`^https:\\/\\/${projectName}[a-z0-9-]*\\.vercel\\.app$`);
+  } catch {
+    return null;
+  }
+})();
+
 app.use(
   cors({
     origin(origin, callback) {
@@ -40,6 +55,10 @@ app.use(
       if (!origin) return callback(null, true);
 
       if (configuredOrigins.includes(origin)) return callback(null, true);
+
+      if (vercelProjectPattern && vercelProjectPattern.test(origin)) {
+        return callback(null, true);
+      }
 
       if (process.env.NODE_ENV !== 'production' && isLocalhostOrigin(origin)) {
         return callback(null, true);
