@@ -26,7 +26,7 @@ export default function Signup() {
     setSubmitting(true);
     try {
       await signup(form.name, form.email, form.password);
-      navigate('/');
+      navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Could not create your account. Try again.');
     } finally {
