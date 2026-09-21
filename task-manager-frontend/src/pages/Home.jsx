@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-paper">
-      <header className="border-b border-paper-line bg-paper-light">
+      <header className="sticky top-0 z-50 border-b border-paper-line bg-paper/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <div className="stamp-underline font-display text-2xl text-ink">Ledger</div>
           <nav className="flex items-center gap-3 text-sm">
@@ -29,7 +29,7 @@ export default function Home() {
 
       <main className="mx-auto max-w-5xl px-6 py-14 md:py-20">
         <div className="grid items-start gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <section className="pt-4">
+          <section className="pt-4 animate-[fadeInUp_0.8s_ease-out]">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-ink-muted">A personal task ledger</p>
             <h1 className="mt-4 max-w-xl font-display text-5xl leading-[0.95] text-ink md:text-6xl">
               A calm place for what needs doing.
@@ -41,13 +41,13 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 to="/signup"
-                className="rounded-sm bg-ink px-5 py-3 text-sm font-medium text-paper-light transition-colors hover:bg-ink-soft"
+                className="rounded-sm bg-ink px-5 py-3 text-sm font-medium text-paper-light transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-soft"
               >
                 Get started
               </Link>
               <Link
                 to="/login"
-                className="rounded-sm border border-paper-line bg-paper-light px-5 py-3 text-sm font-medium text-ink transition-colors hover:border-stamp"
+                className="rounded-sm border border-paper-line bg-paper-light px-5 py-3 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-stamp"
               >
                 Sign in
               </Link>
@@ -60,7 +60,7 @@ export default function Home() {
             </div>
           </section>
 
-          <aside className="rounded-sm border border-paper-line bg-paper-light p-5 shadow-panel">
+          <aside className="animate-[fadeInUp_1s_ease-out] rounded-sm border border-paper-line bg-paper-light p-5 shadow-panel">
             <div className="border-b border-paper-line pb-4">
               <p className="text-[10px] uppercase tracking-[0.22em] text-ink-muted">Today</p>
               <h2 className="mt-3 font-display text-3xl text-ink">3 open tasks</h2>
@@ -71,8 +71,12 @@ export default function Home() {
                 { title: 'Review proposal', meta: 'Due today', tone: 'bg-wax-light text-wax' },
                 { title: 'Email client', meta: 'High priority', tone: 'bg-stamp-light text-ink' },
                 { title: 'Plan sprint', meta: 'In progress', tone: 'bg-ledger-light text-ledger' },
-              ].map((item) => (
-                <div key={item.title} className="flex items-center justify-between gap-3 border-b border-paper-line pb-3 last:border-b-0 last:pb-0">
+              ].map((item, index) => (
+                <div
+                  key={item.title}
+                  className="flex items-center justify-between gap-3 border-b border-paper-line pb-3 last:border-b-0 last:pb-0"
+                  style={{ animation: `fadeInUp 0.8s ease-out ${index * 0.15 + 0.2}s both` }}
+                >
                   <div>
                     <p className="font-medium text-ink">{item.title}</p>
                     <p className="text-xs text-ink-muted">{item.meta}</p>
