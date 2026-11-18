@@ -160,10 +160,10 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-paper">
+    <div className="flex flex-1 flex-col bg-paper">
       <Navbar />
 
-      <main className="mx-auto max-w-3xl px-6 py-10">
+      <main className="mx-auto max-w-3xl flex-1 px-6 py-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="font-display text-3xl text-ink">

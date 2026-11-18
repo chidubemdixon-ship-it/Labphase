@@ -9,7 +9,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-paper">
+    <div className="flex flex-1 flex-col bg-paper">
       <header className="sticky top-0 z-50 border-b border-paper-line bg-paper/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <div className="stamp-underline font-display text-2xl text-ink">Ledger</div>
@@ -27,7 +27,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-6 py-14 md:py-20">
+      <main className="mx-auto max-w-5xl flex-1 px-6 py-14 md:py-20">
         <div className="grid items-start gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <section className="pt-4 animate-[fadeInUp_0.8s_ease-out]">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-ink-muted">A personal task ledger</p>
@@ -91,53 +91,6 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="border-t border-paper-line bg-paper-light">
-        <div className="mx-auto max-w-5xl px-6 py-10 md:py-12">
-          <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:items-start">
-            <div>
-              <div className="stamp-underline font-display text-2xl text-ink">Ledger</div>
-              <p className="mt-4 max-w-sm text-sm leading-7 text-ink-muted">
-                A quiet, focused place for tracking tasks, deadlines, and priorities without the noise of a busy dashboard.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-ink-muted">Navigate</h3>
-              <ul className="mt-4 space-y-3 text-sm text-ink-muted">
-                <li>
-                  <Link to="/" className="transition-colors hover:text-ink">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/login" className="transition-colors hover:text-ink">
-                    Sign in
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/signup" className="transition-colors hover:text-ink">
-                    Create account
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-ink-muted">Why it works</h3>
-              <ul className="mt-4 space-y-3 text-sm text-ink-muted">
-                <li>Clear priorities</li>
-                <li>Simple status tracking</li>
-                <li>Deadline-first planning</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 flex flex-col gap-3 border-t border-paper-line pt-5 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
-            <p>© 2026 Ledger</p>
-            <p>Made for keeping the next task in view.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

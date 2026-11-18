@@ -35,7 +35,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="grid min-h-screen grid-cols-1 md:grid-cols-2">
+    <div className="grid flex-1 grid-cols-1 md:grid-cols-2">
       <div className="hidden flex-col justify-between bg-ink px-12 py-14 text-paper-light md:flex">
         <div className="stamp-underline font-display text-2xl">Ledger</div>
         <div className="max-w-sm">

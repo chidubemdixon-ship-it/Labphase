@@ -6,7 +6,7 @@ export default function ProtectedRoute({ children }) {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-paper">
+      <div className="flex flex-1 items-center justify-center bg-paper">
         <p className="font-display italic text-ink-muted">Opening the ledger…</p>
       </div>
     );
